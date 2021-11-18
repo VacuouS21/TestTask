@@ -10,13 +10,16 @@ import org.springframework.stereotype.Service;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-@AllArgsConstructor
+//@AllArgsConstructor
 @Service
 public class UserService {
-    @Autowired
+   @Autowired
     UserRep userRep;
 
 
+    public UserService(UserRep myRepository){
+        this.userRep = myRepository;
+    }
 
     public User save(User user){
         User newUser= userRep.save(user);
@@ -46,8 +49,9 @@ public class UserService {
     public User getUserFromId(String id){
         return userRep.findById(id).orElse(null);
     }
-    public String delete(String id) {
-        userRep.deleteById(id);
-        return id + " deleted";
+    public User delete(String id) {
+        User user = userRep.findById(id).orElse(null);
+        if(user!=null) userRep.deleteById(id);
+        return user;
     }
 }
