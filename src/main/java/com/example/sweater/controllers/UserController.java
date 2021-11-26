@@ -1,9 +1,12 @@
-package com.example.sweater;
+package com.example.sweater.controllers;
 
 
 
 
-import com.example.sweater.models.User;
+import com.example.sweater.models.UserUpdateRequesModel;
+import com.example.sweater.entity.User;
+import com.example.sweater.repositories.UserRep;
+import com.example.sweater.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

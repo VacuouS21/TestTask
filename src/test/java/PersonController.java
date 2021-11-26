@@ -1,5 +1,5 @@
-import com.example.sweater.UserRep;
-import com.example.sweater.UserService;
+import com.example.sweater.repositories.UserRep;
+import com.example.sweater.services.UserService;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;

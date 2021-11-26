@@ -1,7 +1,9 @@
 package com.example.sweater;
 
-import com.example.sweater.models.User;
+import com.example.sweater.entity.User;
 
+
+import com.example.sweater.repositories.UserRep;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,9 +27,7 @@ public class Application {
                     "I'm learning Java and Spring Core",
                     "I'm studying",
                     "bicycling, painting",
-                    "Белоснежка",
-                    "1990-03-23"
-
+                    "Белоснежка"
             );
             repositry.findUserByEmail(user.getEmail())
                     .ifPresentOrElse(s->{

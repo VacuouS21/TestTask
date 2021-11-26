@@ -1,9 +1,10 @@
-package com.example.sweater;
+package com.example.sweater.services;
 
 
-import com.example.sweater.models.User;
+import com.example.sweater.repositories.UserRep;
+import com.example.sweater.models.UserUpdateRequesModel;
+import com.example.sweater.entity.User;
 
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import java.util.List;
 @Service
 public class UserService {
    @Autowired
-    UserRep userRep;
+   UserRep userRep;
 
 
     public UserService(UserRep myRepository){
@@ -34,14 +35,14 @@ public class UserService {
 
         User user=userRep.findById(id).orElseThrow();
         user.setFio(userUpdateRequesModel.getFio());
-        user.setAbout_me(userUpdateRequesModel.getAbout_me());
+        user.setAboutMe(userUpdateRequesModel.getAboutMe());
         user.setEmail(userUpdateRequesModel.getEmail());
-        user.setHard_skill(userUpdateRequesModel.getHard_skill());
-        user.setWork_experience(userUpdateRequesModel.getWork_experience());
+        user.setHardSkill(userUpdateRequesModel.getHardSkill());
+        user.setWorkExperience(userUpdateRequesModel.getWorkExperience());
         user.setHobby(userUpdateRequesModel.getHobby());
         user.setFilm(userUpdateRequesModel.getFilm());
-        user.setDataRealese(userUpdateRequesModel.getDataRealese());
-        user.setFilm_Describtion(JsonUtils.overReturn(userUpdateRequesModel.getFilm(),userUpdateRequesModel.getDataRealese()));
+
+       user.setFilmDescribtion(FindFilm.FindFilmDescribtion(userUpdateRequesModel.getFilm()));
         userRep.save(user);
         return user;
     }
@@ -49,6 +50,7 @@ public class UserService {
     public User getUserFromId(String id){
         return userRep.findById(id).orElse(null);
     }
+
     public User delete(String id) {
         User user = userRep.findById(id).orElse(null);
         if(user!=null) userRep.deleteById(id);

@@ -1,7 +1,7 @@
-package com.example.sweater;
+package com.example.sweater.repositories;
 
 
-import com.example.sweater.models.User;
+import com.example.sweater.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
